@@ -1,0 +1,529 @@
+
+:root {
+    
+    --bg-secondary: #ffffff;    /* Pure white for cards/header */
+    --text-primary: #2c2c44;    /* Dark purple-grey text */
+    --text-secondary: #7a7a93;  /* Lighter purple-grey */
+    --color-accent: #ff7eb9;    /* BRIGHT Pink (was dusty) */
+    --color-highlight: #a691f5; /* BRIGHT Purple (was soft) */
+    
+    
+    --color-pink: #ffc2e2;
+    --color-purple: #e0c3fc;
+    --color-mint: #c6fced;
+    --color-peach: #ffd8b1;
+    --color-sky: #bde0fe;
+    
+    
+    --font-family-main: 'Lato', 'Arial', sans-serif;
+    --font-family-headings: 'Playfair Display', 'Georgia', serif;
+
+    
+    --border-radius-sm: 8px;
+    --border-radius-lg: 12px;
+    --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    font-family: var(--font-family-main);
+    color: var(--text-primary);
+    line-height: 1.7;
+    
+    /* The orbs will be the animation. */
+    background: linear-gradient(315deg, #fdfaf6, #f0f3ff);
+    overflow-x: hidden; /* Prevents horizontal scroll from orbs */
+}
+
+
+.orb-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Sits BEHIND content */
+    overflow: hidden; 
+}
+
+.orb {
+    position: absolute;
+    bottom: -150px; /* Start below the screen */
+    display: block;
+    border-radius: 50%;
+    
+    /* Blur effect to make them soft */
+    filter: blur(10px);
+    opacity: 0.6; /* Semi-transparent */
+    
+    /* Apply the animation */
+    animation: animateUp 15s linear infinite;
+}
+
+/* Individual Orb Styles (Size, Position, Color, Delay) */
+.orb:nth-child(1) {
+    width: 80px; height: 80px;
+    left: 10%;
+    background-color: var(--color-pink);
+    animation-duration: 20s;
+}
+.orb:nth-child(2) {
+    width: 40px; height: 40px;
+    left: 20%;
+    background-color: var(--color-purple);
+    animation-duration: 16s;
+    animation-delay: 2s;
+}
+.orb:nth-child(3) {
+    width: 60px; height: 60px;
+    left: 30%;
+    background-color: var(--color-mint);
+    animation-duration: 22s;
+    animation-delay: 5s;
+}
+.orb:nth-child(4) {
+    width: 100px; height: 100px;
+    left: 45%;
+    background-color: var(--color-sky);
+    animation-duration: 18s;
+}
+.orb:nth-child(5) {
+    width: 50px; height: 50px;
+    left: 60%;
+    background-color: var(--color-peach);
+    animation-duration: 25s;
+    animation-delay: 3s;
+}
+.orb:nth-child(6) {
+    width: 70px; height: 70px;
+    left: 75%;
+    background-color: var(--color-pink);
+    animation-duration: 17s;
+}
+.orb:nth-child(7) {
+    width: 45px; height: 45px;
+    left: 85%;
+    background-color: var(--color-purple);
+    animation-duration: 23s;
+    animation-delay: 6s;
+}
+.orb:nth-child(8) {
+    width: 90px; height: 90px;
+    left: 5%;
+    background-color: var(--color-mint);
+    animation-duration: 19s;
+    animation-delay: 8s;
+}
+.orb:nth-child(9) {
+    width: 55px; height: 55px;
+    left: 65%;
+    background-color: var(--color-sky);
+    animation-duration: 21s;
+}
+.orb:nth-child(10) {
+    width: 30px; height: 30px;
+    left: 90%;
+    background-color: var(--color-peach);
+    animation-duration: 15s;
+    animation-delay: 4s;
+}
+
+/* --- Typography --- */
+h1, h2, h3 {
+    font-family: var(--font-family-headings);
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+h1 { font-size: 3.5rem; }
+h2 { font-size: 2.5rem; text-align: center; margin-bottom: 2.5rem; }
+p  { font-size: 1.05rem; margin-bottom: 1.5rem; color: var(--text-secondary); }
+
+a {
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+a:hover { color: var(--color-highlight); }
+
+/* --- Layout Containers --- */
+.section-full {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    position: relative; z-index: 2; /* Sits ON TOP of orbs */
+}
+
+.section-container {
+    padding: 5rem 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative; z-index: 2; /* Sits ON TOP of orbs */
+}
+
+/* --- Header & Navigation --- */
+header {
+    width: 100%;
+    padding: 1.5rem 2rem;
+    background-color: rgba(255, 255, 255, 0.8); /* Translucent White */
+    backdrop-filter: blur(10px); /* Frosted glass effect */
+    border-bottom: 1px solid #eee;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Sits on top of EVERYTHING */
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.nav-logo {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: var(--text-primary);
+    font-family: var(--font-family-headings);
+}
+
+.nav-menu { list-style: none; display: flex; gap: 2.5rem; }
+.nav-menu li { display: inline; }
+.nav-menu a {
+    color: var(--text-secondary);
+    font-weight: 700;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+.nav-menu a:hover { color: var(--color-accent); }
+
+.nav-toggle {
+    display: none; background: none; border: none;
+    color: var(--text-primary); font-size: 1.5rem; cursor: pointer;
+}
+
+/* --- Hero Section --- */
+.hero-content {
+    animation: fadeInSlideUp 0.8s ease-out forwards;
+}
+.hero-content .highlight { color: var(--color-accent); }
+.hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    margin-bottom: 2.5rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-button {
+    display: inline-block;
+    background: var(--color-accent);
+    color: #fff;
+    padding: 0.9rem 2rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    border: none;
+    box-shadow: 0 4px 15px rgba(255, 126, 185, 0.4); /* Pink glow */
+}
+
+.cta-button:hover {
+    background: var(--color-highlight);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(166, 145, 245, 0.5); /* Purple glow */
+}
+
+/* --- About Section (with Profile Pic) --- */
+.about-container {
+    display: flex;
+    align-items: flex-start; 
+    gap: 3rem;
+    max-width: 1000px; 
+    margin: 0 auto; 
+}
+/* --- ADD THIS NEW CODE --- */
+.about-image {
+    flex-basis: 30%; 
+    flex-shrink: 0;
+    max-width: 280px; /* Max size of the whole element */
+    
+    /* 1. Make the container round and a "positioning" parent */
+    position: relative;
+    border-radius: 50%;
+    
+    /* 2. Add padding. This will be the "thickness" of our border */
+    padding: 5px; 
+    
+    /* 3. Hide any spinning parts that go outside the circle */
+    overflow: hidden; 
+    
+    /* 4. Add a shadow to the whole container */
+    box-shadow: 0 4px 20px rgba(166, 145, 245, 0.4); /* Purple glow */
+}
+
+/* 5. This is the animated gradient! */
+.about-image::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    z-index: 1; /* Sits behind the image, but on top of the container */
+    
+    /* The magic: a multi-colored cone-shaped gradient */
+    background: conic-gradient(
+        from 0deg,
+        var(--color-pink), 
+        var(--color-purple), 
+        var(--color-mint), 
+        var(--color-sky), 
+        var(--color-pink) /* Loop back to pink */
+    );
+    
+    /* 6. Apply the spinning animation! */
+    animation: spin-border 6s linear infinite;
+}
+
+.profile-picture {
+    width: 100%;
+    display: block; /* Fixes any weird image spacing */
+    
+    /* 7. Make the image round */
+    border-radius: 50%; 
+    
+    /* 8. Put the image on TOP of the spinning gradient */
+    position: relative;
+    z-index: 2; 
+}
+.about-content { flex-basis: 70%; text-align: left; }
+.resume-button { margin-bottom: 3rem; }
+.resume-button i { margin-right: 0.5rem; }
+
+/* --- Skill Card Styles --- */
+.skills-list { width: 100%; margin-top: 3rem; }
+.skill-category { margin-bottom: 2.5rem; }
+.skill-category h3 {
+    font-family: var(--font-family-main); 
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.skill-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 1.5rem;
+}
+.skill-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-secondary); /* Solid White */
+    border: 1px solid #eee;
+    border-radius: var(--border-radius-lg); 
+    padding: 2rem 1rem;
+    text-align: center;
+    box-shadow: var(--shadow-light);
+    transition: all 0.3s ease-out; 
+}
+.skill-item:hover {
+    transform: translateY(-8px); 
+    border-color: var(--color-accent);
+    box-shadow: 0 4px 20px rgba(255, 126, 185, 0.3); /* Pink glow */
+}
+.skill-item i { font-size: 3.5rem; margin-bottom: 1rem; }
+.skill-item span {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-primary); 
+}
+
+/* ---ICON COLORS --- */
+.html-icon  { color: #ff9a8a; } /* Peach */
+.css-icon   { color: #82aaff; } /* Blue */
+.js-icon    { color: #f7e158; } /* Yellow */
+.react-icon { color: #80deea; } /* Cyan */
+.figma-icon { color: #f24e1e; } /* Original Red */
+.uiux-icon  { color: var(--color-highlight); } /* Purple */
+.python-icon    { color: #3776AB; } /* Original Blue */
+.java-icon      { color: #f89820; } /* Original Orange */
+.cplusplus-icon { color: #00599C; } /* Original Blue */
+.c-icon         { color: #A8B9CC; } /* Original Grey */
+.sql-icon       { color: #00758f; } /* Original Teal */
+
+
+/* --- Projects Section --- */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+}
+.project-card {
+    background: var(--bg-secondary);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-light);
+    transition: all 0.3s ease;
+}
+.project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+.project-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    background-color: #f0f0f0; 
+}
+.project-card h3 { padding: 1.5rem 1.5rem 0 1.5rem; color: var(--text-primary); }
+.project-card p { padding: 0 1.5rem 1rem 1.5rem; font-size: 0.95rem; }
+.project-links {
+    padding: 0 1.5rem 1.5rem 1.5rem;
+    display: flex;
+    gap: 1.5rem;
+}
+.project-link {
+    color: var(--text-secondary);
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+.project-link:hover { color: var(--color-accent); }
+.project-link i { margin-right: 0.3rem; }
+
+/* --- "Get In Touch" Social Buttons --- */
+#contact { max-width: 800px; text-align: center; }
+.social-links-grid {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center;
+    gap: 1.25rem; 
+    margin-top: 2.5rem;
+}
+.social-button {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem; 
+    padding: 0.75rem 1.75rem; 
+    border-radius: 50px; 
+    font-size: 1.1rem;
+    font-weight: 700;
+    border: 1px solid #ddd; 
+    background-color: var(--bg-secondary);
+    text-decoration: none;
+    transition: all 0.3s ease-out;
+}
+.social-button i { font-size: 1.3rem; }
+
+/* --- Button Specific Colors & Hovers --- */
+.social-button.linkedin { color: #0a66c2; border-color: #0a66c2; }
+.social-button.linkedin:hover {
+    background-color: rgba(10, 102, 194, 0.08); 
+    box-shadow: 0 0 15px rgba(10, 102, 194, 0.4); 
+    transform: translateY(-3px);
+}
+.social-button.github { color: #333; border-color: #333; }
+.social-button.github:hover {
+    background-color: rgba(51, 51, 51, 0.08);
+    box-shadow: 0 0 15px rgba(51, 51, 51, 0.3);
+    transform: translateY(-3px);
+}
+.social-button.email { color: #c71610; border-color: #c71610; }
+.social-button.email:hover {
+    background-color: rgba(199, 22, 16, 0.08);
+    box-shadow: 0 0 15px rgba(199, 22, 16, 0.4);
+    transform: translateY(-3px);
+}
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    padding: 3rem 2rem;
+    background-color: var(--bg-secondary);
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-top: 3rem;
+    border-top: 1px solid #eee;
+    position: relative; z-index: 2; /* Sits ON TOP of orbs */
+}
+
+/* --- Responsive (Mobile) --- */
+@media (max-width: 768px) {
+    h1 { font-size: 2.8rem; }
+    h2 { font-size: 2rem; }
+
+    /* Stack About section on mobile */
+    .about-container { flex-direction: column; align-items: center; gap: 2rem; }
+    .about-content { text-align: center; }
+    .profile-picture { max-width: 200px; }
+    .skills-list { justify-content: center; }
+    .skill-grid { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 1rem; }
+
+    .nav-menu {
+        display: none; flex-direction: column; width: 100%;
+        position: absolute; top: 85px; left: 0;
+        background-color: rgba(255, 255, 255, 0.9); /* Translucent mobile menu */
+        backdrop-filter: blur(5px);
+        padding: 1rem 0;
+        border-bottom: 1px solid #eee;
+        box-shadow: var(--shadow-light);
+    }
+    .nav-menu.active { display: flex; }
+    .nav-menu li { text-align: center; padding: 0.5rem 0; }
+    .nav-toggle { display: block; }
+    .project-grid { grid-template-columns: 1fr; }
+}
+
+/* --- ALL KEYFRAMES --- */
+
+/* Hero text fade-in */
+@keyframes fadeInSlideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Orb animation (was gradient) */
+@keyframes animateUp {
+    0% {
+        transform: translateY(0);
+        opacity: 0.6;
+    }
+    100% {
+        transform: translateY(-120vh); /* Move 120% of the screen height */
+        opacity: 0;
+    }
+}
+
+
+@keyframes spin-border {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
