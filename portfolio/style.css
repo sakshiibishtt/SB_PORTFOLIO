@@ -375,6 +375,14 @@ nav {
 .cplusplus-icon { color: #00599C; } /* Original Blue */
 .c-icon         { color: #A8B9CC; } /* Original Grey */
 .sql-icon       { color: #00758f; } /* Original Teal */
+/* ... all your existing icon colors ... */
+.sql-icon { color: #00758f; } /* Original Teal */
+
+/* === ADD THESE NEW LINES === */
+.git-icon    { color: #F05032; }
+.github-icon { color: #181717; } /* Black looks sharp on the white card */
+.vercel-icon { color: #000000; } /* Black looks sharp on the white card */
+.render-icon { color: #46E3B7; }
 
 
 /* --- Projects Section --- */
@@ -526,4 +534,64 @@ footer {
   to {
     transform: rotate(360deg);
   }
+}
+/* --- PRELOADER / SPLASH SCREEN --- */
+
+#preloader {
+    position: fixed; /* Cover the whole screen */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; /* Full viewport height */
+    
+    /* Use the static "fairy" background */
+    background: linear-gradient(315deg, #fdfaf6, #f0f3ff);
+    
+    /* Center the "SB" */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    z-index: 9999; /* Stay on top of ALL content */
+    
+    /* This controls the fade-out */
+    transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+}
+
+#preloader h1 {
+    font-family: var(--font-family-headings); /* Use 'Playfair Display' */
+    font-size: 10rem; /* Make it BIG */
+    
+    /* Create a text gradient with your theme colors */
+    background: linear-gradient(45deg, var(--color-accent), var(--color-highlight));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+    /* Add a subtle "pop" animation */
+    animation: pop-in 1s ease-out;
+}
+
+/* This is the class JavaScript will add */
+.preloader-hidden {
+    opacity: 0;
+    visibility: hidden; /* Hide it from screen readers and clicks */
+}
+
+/* This class will trigger the hero animation */
+.hero-animated {
+    animation: fadeInSlideUp 0.8s ease-out forwards;
+}
+
+
+/* Keyframe for the "SB" popping in */
+@keyframes pop-in {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }

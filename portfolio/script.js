@@ -1,4 +1,19 @@
-// Get the elements from the DOM
+window.addEventListener("load", () => {
+  // Select the elements
+  const preloader = document.getElementById("preloader");
+  const heroContent = document.querySelector(".hero-content");
+
+  // Set the 2-second timer (1000 milliseconds)
+  setTimeout(() => {
+    // 1. Add the class to fade out the preloader
+    preloader.classList.add("preloader-hidden");
+
+    // 2. Add the class to fade in the hero content
+    heroContent.classList.add("hero-animated");
+  }, 1000); // <-- This is 2 seconds
+});
+
+// ... rest of your code// Get the elements from the DOM
 const navToggle = document.getElementById("nav-toggle");
 const navMenu = document.getElementById("nav-menu");
 
